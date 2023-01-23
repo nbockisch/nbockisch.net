@@ -1,0 +1,15 @@
+[package]
+name = "nbockisch-dot-net"
+version = "0.0.1"
+edition = "2021"
+authors = ["Nathan Bockisch <nbockisch@protonmail.com>"]
+description = "A personal web page for Nathan Bockisch"
+repository = "https://github.com/nbockisch/nbockisch.net"
+readme = "README.md"
+license-file = "LICENSE"
+
+[dependencies]
+yew = { version = "0.20", features = ["csr"] }
+stylist = { version = "0.11.0", features = ["yew_integration"] }
+gloo-net = "0.2"
+gloo-storage = "0.2"
