@@ -38,6 +38,7 @@ pub fn theme_selector() -> Html {
         border-radius: min(1.2vw, 0.7rem);
         background-color: var(--backdrop);
         position: relative;
+        animation: fade-in 1s;
 
         .switch-block {
             position: relative;
@@ -70,7 +71,7 @@ pub fn theme_selector() -> Html {
             transition: all 0.3s ease-out;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 100rem) {
             margin-left: auto;
             margin-right: auto;
         }

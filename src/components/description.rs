@@ -30,7 +30,11 @@ pub fn description() -> Html {
                 &"EMail",
                 &"mailto:nbockisch@protonmail.com"
             ),
-            Link::new(&"bi bi-file-earmark-richtext-fill", &"Résumé", &"#"),
+            Link::new(
+                &"bi bi-file-earmark-richtext-fill",
+                &"Résumé",
+                &"https://github.com/nbockisch/Resume/blob/master/resume.pdf"
+            ),
         ];
 
     html! {
@@ -156,7 +160,7 @@ pub fn description() -> Html {
                             </span>
                             {". I even "}
                             <a
-                                href="#"
+                                href="https://github.com/nbockisch/nbockisch.net"
                                 target="_blank"
                             >
                                 {"built this website in it"}
