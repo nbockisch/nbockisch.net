@@ -20,7 +20,7 @@ use gloo_storage::{
 };
 
 mod components;
-use components::description;
+use components::*;
 
 /// An enum with the themes available for the webpage
 #[derive(Clone)]
@@ -86,6 +86,11 @@ pub struct AppContext {
     theme: UseReducerHandle<ThemeState>,
 }
 
+/// The starting component where all other components are displayed from
+///
+/// # Return
+/// The `Html` object containing the DOM representation of the components
+/// displayed from this one
 #[function_component(App)]
 fn app() -> Html {
     let theme = use_reducer(ThemeState::default);
@@ -115,8 +120,9 @@ fn app() -> Html {
         <ContextProvider<AppContext> context={AppContext {
             theme: theme.clone(),
         }}>
-            <div class={classes!(base_style, get_theme_class(theme))}>
-                <description::Description />
+            <div class={classes!(get_theme_class(theme), base_style)}>
+                <components::about::About />
+                <components::skills::Skills />
             </div>
         </ContextProvider<AppContext>>
     }
