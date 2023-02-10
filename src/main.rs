@@ -1,6 +1,7 @@
 use std::rc::Rc;
 
 use stylist::css;
+
 use yew::{
     ContextProvider,
     classes,
@@ -11,6 +12,12 @@ use yew::{
     UseReducerHandle,
     use_effect_with_deps,
     use_reducer,
+};
+
+use yew_router::{
+    BrowserRouter,
+    Routable,
+    Switch,
 };
 
 use gloo_storage::{
@@ -86,6 +93,34 @@ pub struct AppContext {
     theme: UseReducerHandle<ThemeState>,
 }
 
+/// The pages the site can route to
+#[derive(Debug, Clone, Copy, PartialEq, Routable)]
+enum Routes {
+    #[at("/")]
+    Home,
+    #[at("/experience")]
+    Experience,
+    #[at("/skills")]
+    Skills,
+    #[not_found]
+    #[at("/404")]
+    NotFound,
+}
+
+/// Facilitates routing between pages
+///
+/// # Arguments
+/// * `route` - A `Routes` item which indicates where to route to
+///
+/// # Return
+/// An `Html` object containing the DOM representation of the desired page
+fn switch_page(route: Routes) -> Html {
+    match route {
+        Routes::Home => html! { <about::About /> },
+        _ => html!(),
+    }
+}
+
 /// The starting component where all other components are displayed from
 ///
 /// # Return
@@ -120,9 +155,10 @@ fn app() -> Html {
         <ContextProvider<AppContext> context={AppContext {
             theme: theme.clone(),
         }}>
-            <div class={classes!(get_theme_class(theme), base_style)}>
-                <components::about::About />
-                <components::skills::Skills />
+            <div class={classes!(get_theme_class(theme), base_style, "bg")}>
+                <BrowserRouter>
+                    <Switch<Routes> render={switch_page} />
+                </BrowserRouter>
             </div>
         </ContextProvider<AppContext>>
     }

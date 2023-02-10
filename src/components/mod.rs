@@ -2,3 +2,4 @@
 mod theme_selector;
 pub mod about;
 pub mod skills;
+pub mod experience;

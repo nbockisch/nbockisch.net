@@ -1,9 +1,15 @@
+// .night {
+//   --bg-1: #100f0f;
+//   --bg-2: #0f3d3e;
+//   --bg-nav: #b79f4e;
+//   --text-1: #e2dcc8;
+//   --text-2: #f1f1f1;
+// }
+
 .night {
-  --bg-1: #100f0f;
-  --bg-2: #0f3d3e;
-  --bg-nav: #b79f4e;
-  --text-1: #e2dcc8;
-  --text-2: #f1f1f1;
+    --bg: #0f0f0f;
+    --bg-hl: #353535;
+    --text: #f2f2f2;
 }
 
 .day {
@@ -13,6 +19,10 @@
   --text-1: #1d2337;
   --text-2: #0e0e0e;
 }
+
+.bg { background-color: var(--bg); }
+.bg-hl { background-color: var(--bg-hl); }
+.text { color: var(--text); }
 
 .bg-1 { background-color: var(--bg-1); }
 .bg-2 { background-color: var(--bg-2); }

@@ -15,41 +15,52 @@ use yew::{
 pub fn about() -> Html {
     let about_style = css!(
         "
-        text-align: center;
+        margin-left: 8%;
+        width: 60rem;
+        padding: 2rem;
 
         img {
-            width: min(40vw, 20rem);
-            height: min(40vw, 20rem);
+            width: 15rem;
+            max-height: 15rem;
 
-            border: min(1vw, 0.5rem) solid var(--bg-2);
+            border: 0.1rem solid var(--text);
             border-radius: 50%;
 
             object-fit: cover;
+            aspect-ratio: 1/1;
         }
 
-        #description {
-            width: min(80vw, 40rem);
+        #header {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 5rem;
+            border-bottom: 1px solid #fff;
+        }
+
+        @media (max-width: 80rem) {
             margin-left: auto;
             margin-right: auto;
+            width: 90%;
         }
         "
     );
 
     html! {
-        <div class={classes!(about_style, "section", "bg-1", "text-1")}>
-            <img src="./assets/profile.jpg" alt="Me on a VLA antenna!"/>
-            <p class={"text-header"}>{"👋 Hi, I'm Nathan!"}</p>
+        <div class={classes!(about_style, "section", "text")}>
 
-            <div id={"description"}>
-                <p class={"text-norm"}>
-                    {concat!(
-                        "That's me on top of an antenna at the Very Large Array! ",
-                        "I'm a system administrator turned software engineer, ",
-                        "currently with the National Radio Astronomy Observatory.",
-                    ) }
-                </p>
+            <div id={"header"}>
+                <img src="./assets/profile.jpg" alt="Me on a VLA antenna!"/>
+                <p class={"text-header"}>{"👋 Hi, I'm Nathan!"}</p>
             </div>
-            <div class={classes!("divider-bottom", "bg-2")}/>
+            <p class={"text-norm"}>
+                {concat!(
+                    "That's me on top of an antenna at the Very Large Array! ",
+                    "I'm a system administrator turned software engineer, ",
+                    "currently with the National Radio Astronomy Observatory.",
+                ) }
+            </p>
         </div>
     }
 }
